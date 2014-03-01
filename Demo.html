@@ -1,0 +1,462 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+	<style type="text/css">
+		#c
+		{
+			margin: 0px auto; /*border: 1px solid #999;*/
+			width: 400px;
+			height: 400px; /*background-image: url(data:image/jpeg;base64,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czp4PSJhZG9iZTpuczptZXRhLyIgeDp4bXB0az0iQWRvYmUgWE1QIENvcmUgNS4wLWMwNjAgNjEuMTM0Nzc3LCAyMDEwLzAyLzEyLTE3OjMyOjAwICAgICAgICAiPiA8cmRmOlJERiB4bWxuczpyZGY9Imh0dHA6Ly93d3cudzMub3JnLzE5OTkvMDIvMjItcmRmLXN5bnRheC1ucyMiPiA8cmRmOkRlc2NyaXB0aW9uIHJkZjphYm91dD0iIiB4bWxuczp4bXA9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC8iIHhtbG5zOnhtcE1NPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvbW0vIiB4bWxuczpzdEV2dD0iaHR0cDovL25zLmFkb2JlLmNvbS94YXAvMS4wL3NUeXBlL1Jlc291cmNlRXZlbnQjIiB4bWxuczpkYz0iaHR0cDovL3B1cmwub3JnL2RjL2VsZW1lbnRzLzEuMS8iIHhtbG5zOnBob3Rvc2hvcD0iaHR0cDovL25zLmFkb2JlLmNvbS9waG90b3Nob3AvMS4wLyIgeG1wOkNyZWF0b3JUb29sPSJBZG9iZSBQaG90b3Nob3AgQ1M1IFdpbmRvd3MiIHhtcDpDcmVhdGVEYXRlPSIyMDE0LTAyLTEyVDE3OjIxOjMzKzA4OjAwIiB4bXA6TWV0YWRhdGFEYXRlPSIyMDE0LTAyLTEyVDE3OjIxOjMzKzA4OjAwIiB4bXA6TW9kaWZ5RGF0ZT0iMjAxNC0wMi0xMlQxNzoyMTozMyswODowMCIgeG1wTU06SW5zdGFuY2VJRD0ieG1wLmlpZDo1QUMzMjZGNEM2OTNFMzExOTg4OEFEODFCRTY1OTQzOCIgeG1wTU06RG9jdW1lbnRJRD0ieG1wLmRpZDo1OUMzMjZGNEM2OTNFMzExOTg4OEFEODFCRTY1OTQzOCIgeG1wTU06T3JpZ2luYWxEb2N1bWVudElEPSJ4bXAuZGlkOjU5QzMyNkY0QzY5M0UzMTE5ODg4QUQ4MUJFNjU5NDM4IiBkYzpmb3JtYXQ9ImltYWdlL2pwZWciIHBob3Rvc2hvcDpDb2xvck1vZGU9IjEiPiA8eG1wTU06SGlzdG9yeT4gPHJkZjpTZXE+IDxyZGY6bGkgc3RFdnQ6YWN0aW9uPSJjcmVhdGVkIiBzdEV2dDppbnN0YW5jZUlEPSJ4bXAuaWlkOjU5QzMyNkY0QzY5M0UzMTE5ODg4QUQ4MUJFNjU5NDM4IiBzdEV2dDp3aGVuPSIyMDE0LTAyLTEyVDE3OjIxOjMzKzA4OjAwIiBzdEV2dDpzb2Z0d2FyZUFnZW50PSJBZG9iZSBQaG90b3Nob3AgQ1M1IFdpbmRvd3MiLz4gPHJkZjpsaSBzdEV2dDphY3Rpb249InNhdmVkIiBzdEV2dDppbnN0YW5jZUlEPSJ4bXAuaWlkOjVBQzMyNkY0QzY5M0UzMTE5ODg4QUQ4MUJFNjU5NDM4IiBzdEV2dDp3aGVuPSIyMDE0LTAyLTEyVDE3OjIxOjMzKzA4OjAwIiBzdEV2dDpzb2Z0d2FyZUFnZW50PSJBZG9iZSBQaG90b3Nob3AgQ1M1IFdpbmRvd3MiIHN0RXZ0OmNoYW5nZWQ9Ii8iLz4gPC9yZGY6U2VxPiA8L3htcE1NOkhpc3Rvcnk+IDwvcmRmOkRlc2NyaXB0aW9uPiA8L3JkZjpSREY+IDwveDp4bXBtZXRhPiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIDw/eHBhY2tldCBlbmQ9InciPz7/7gAOQWRvYmUAZIAAAAAA/9sAQwAgISEzJDNRMDBRQi8vL0InHBwcHCciFxcXFxciEQwMDAwMDBEMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwM/8AACwgAEAAQAQERAP/dAAQAAv/EAJIAAAMBAQEBAQEBAQEAAAAAAAEAAgMEBQYHCAkKCxAAAgIBAwIDBAcGAwMGAgE1AQACEQMhEjEEQVEiE2FxMoGRsUKhBdHBFPBSI3IzYuGC8UM0kqKyFdJTJHPCYwaDk+Lyo0RUZCU1RRYmdDZVZbOEw9N14/NGlKSFtJXE1OT0pbXF1eX1VmZ2hpamtsbW5vb/2gAIAQEAAD8A+geJ/9D03tf/2Q==);
+		*/
+		}
+	</style>
+	<script language="javascript" type="text/javascript">
+		(function () {
+			// 当前是否处于创建类的阶段
+			var initializing = false;
+			mClass = function () { };
+			mClass.extend = function (prop) {
+				// 如果调用当前函数的对象（这里是函数）不是Class，则是父类
+				var baseClass = null;
+				if (this !== mClass) {
+					baseClass = this;
+				}
+				// 本次调用所创建的类（构造函数）
+				function F() {
+					// 如果当前处于实例化类的阶段，则调用init原型函数
+					if (!initializing) {
+						// 如果父类存在，则实例对象的baseprototype指向父类的原型
+						// 这就提供了在实例对象中调用父类方法的途径
+						if (baseClass) {
+							this._superprototype = baseClass.prototype;
+						}
+						this.init.apply(this, arguments);
+					}
+				}
+				// 如果此类需要从其它类扩展
+				if (baseClass) {
+					initializing = true;
+					F.prototype = new baseClass();
+					F.prototype.constructor = F;
+					initializing = false;
+				}
+				// 新创建的类自动附加extend函数
+				F.extend = arguments.callee;
+
+				// 覆盖父类的同名函数
+				for (var name in prop) {
+					if (prop.hasOwnProperty(name)) {
+						// 如果此类继承自父类baseClass并且父类原型中存在同名函数name
+						if (baseClass &&
+                        typeof (prop[name]) === "function" &&
+                        typeof (F.prototype[name]) === "function" &&
+                        /\b_super\b/.test(prop[name])) {
+							// 重定义函数name - 
+							// 首先在函数上下文设置this._super指向父类原型中的同名函数
+							// 然后调用函数prop[name]，返回函数结果
+							// 注意：这里的自执行函数创建了一个上下文，这个上下文返回另一个函数，
+							// 此函数中可以应用此上下文中的变量，这就是闭包（Closure）。
+							// 这是JavaScript框架开发中常用的技巧。
+							F.prototype[name] = (function (name, fn) {
+								return function () {
+									this._super = baseClass.prototype[name];
+									return fn.apply(this, arguments);
+								};
+							})(name, prop[name]);
+						} else {
+							F.prototype[name] = prop[name];
+						}
+					}
+				}
+				return F;
+			};
+		})();
+		var MiscFn = {
+			Angle: function (A, B, C) {
+				var Xo = B.x, Yo = B.y;
+				var Xa = A.x, Ya = A.y;
+				var Xb = C.x, Yb = C.y;
+				var ab = Math.sqrt((B.x - A.x) * (B.x - A.x) + (B.y - A.y) * (B.y - A.y));
+				var bc = Math.sqrt((B.x - C.x) * (B.x - C.x) + (B.y - C.y) * (B.y - C.y));
+				var ac = Math.sqrt((A.x - C.x) * (A.x - C.x) + (A.y - C.y) * (A.y - C.y));
+				var abc = Math.acos((ab * ab + bc * bc - ac * ac) / (2 * ab * bc)); // 弧度
+				return abc; //
+			},
+			Bind: function (fn, context) {
+				return function () {
+					return fn.apply(context, arguments);
+				};
+			},
+			RotatedPoint:function(A,O,a){
+				var dx =A.x-O.x;
+				var dy =A.y-O.y;
+				var x=Math.cos(a)*dx-Math.sin(a)*dy+O.x;
+				var y=Math.cos(a)*dy+Math.sin(a)*dx+O.y;
+				return new Point(x,y);
+			}  
+		};
+		var Point = mClass.extend({
+			init: function (x, y) {
+				this.x = x;
+				this.y = y;
+			}
+		});
+		var Element = mClass.extend({
+			moving: false,
+			selected: false,
+			init: function (x, y, w, h) {
+				this.x = x;
+				this.y = y;
+				this.width = w;
+				this.height = h;
+				this.mousedownpoint=new Point(0,0);
+			},
+			Contains: function (point) {
+				var tl = new Point(this.x, this.y);
+				var bl = new Point(this.x, this.y + this.height);
+				var tr = new Point(this.x + this.width, this.y);
+				var br = new Point(this.x + this.width, this.y + this.height);
+				var a = MiscFn.Angle(tl, point, tr);
+				a += MiscFn.Angle(tr, point, br);
+				a += MiscFn.Angle(br, point, bl);
+				a += MiscFn.Angle(bl, point, tl);
+				a = 180 * (a / Math.PI);
+				if (a > 359.9) {
+					return true;
+				} else {
+					return false;
+				}
+			},
+			Draw: function (context) {
+				console.log("Draw");
+				//context.clearRect(this.x,this.y,this.width, this.height);
+			},
+			GetCursor: function () {
+				return "auto";
+			},
+			onmousedown: function (point) {
+
+				this.mousedownpoint=point;
+				this.moving = true;
+			},
+			onmouseup: function (point) {
+				this.moving = false;
+			},
+			onmousemove: function (point) {
+
+			}
+		});
+		var Edge = Element.extend({
+			init: function (location,x,y, size) {
+				this._super(x, y, size, size);
+				this.location = location;
+			},
+			Draw: function (context) {
+				this._super(context);
+				context.save();
+				context.fillStyle = "#FFFFFF";
+				context.strokeStyle = "#555566";
+				context.fillRect(this.x, this.y, this.width, this.height);
+				context.strokeRect(this.x, this.y, this.width, this.height);
+				context.restore();
+			},
+			MoveTo: function (x, y) {
+				this.x = x;
+				this.y = y;
+			},
+			GetCursor: function () {
+				switch (this.location) {
+					case "top":
+						return "n-resize";
+					case "top_left":
+						return "nw-resize";
+					case "top_right":
+						return "ne-resize";
+					case "left":
+						return "w-resize";
+					case "right":
+						return "w-resize";
+					case "bottom":
+						return "n-resize";
+					case "bottom_left":
+						return "ne-resize";
+					case "bottom_right":
+						return "nw-resize";
+					case "rotation":
+						return "Pointer";
+					default:
+						return this._super();
+				}
+			},
+
+		});
+		var Block = Element.extend({
+			init: function (x, y, w, h) {
+				this._super(x, y, w, h);
+				//Edge
+				var size=7,cv=size/2;
+				this.top_edge = new Edge("top", this.width / 2 + this.x - cv, this.y - cv, size);
+				this.top_left_edge = new Edge("top_left", this.x - cv, this.y - cv, size);
+				this.top_right_edge = new Edge("top_right", this.x + this.width - cv, this.y - cv, size);
+				this.left_edge = new Edge("left", this.x - cv, this.height / 2 + this.y - cv, size);
+				this.right_edge = new Edge("right", this.x + this.width - cv, this.height / 2 + this.y - cv, size);
+				this.bottom_edge = new Edge("bottom", this.width / 2 + this.x - cv, this.height + this.y - cv, size);
+				this.bottom_left_edge = new Edge("bottom_left", this.x - cv, this.height + this.y - cv, size);
+				this.bottom_right_edge = new Edge("bottom_right", this.x + this.width - cv, this.height + this.y - cv, size);
+			},
+			Contains: function (point) {
+
+				if (this.top_edge.Contains(point)) {
+					return true;
+				}
+				if (this.top_left_edge.Contains(point)) {
+					return true;
+				}
+				if (this.top_right_edge.Contains(point)) {
+					return true;
+				}
+				if (this.left_edge.Contains(point)) {
+					return true;
+				}
+				if (this.right_edge.Contains(point)) {
+					return true;
+				}
+				if (this.bottom_edge.Contains(point)) {
+					return true;
+				}
+				if (this.bottom_left_edge.Contains(point)) {
+					return true;
+				}
+				if (this.bottom_right_edge.Contains(point)) {
+					return true;
+				}
+				return this._super(point);
+			},
+			BufferCanvas: function () {
+				var buffer_canvas = document.createElement("canvas");
+				//设置画布像素个数
+				buffer_canvas.setAttribute("height", this.height);
+				buffer_canvas.setAttribute("width", this.width);
+				return buffer_canvas;
+			},
+			DrawEdge: function (context) {
+				var cv=7/2;
+				this.top_edge.MoveTo(this.width / 2 + this.x - cv, this.y - cv);
+				this.top_left_edge.MoveTo(this.x - cv, this.y - cv);
+				this.top_right_edge.MoveTo(this.x + this.width - cv, this.y - cv);
+				this.left_edge.MoveTo(this.x - cv, this.height / 2 + this.y - cv);
+				this.right_edge.MoveTo(this.x + this.width - cv, this.height / 2 + this.y - cv);
+				this.bottom_edge.MoveTo(this.width / 2 + this.x - cv, this.height + this.y - cv);
+				this.bottom_left_edge.MoveTo(this.x - cv, this.height + this.y - cv, cv * 2, cv * 2);
+				this.bottom_right_edge.MoveTo(this.x + this.width - cv, this.height + this.y - cv);
+				this.top_edge.Draw(context);
+				this.top_left_edge.Draw(context);
+				this.top_right_edge.Draw(context);
+				this.left_edge.Draw(context);
+				this.right_edge.Draw(context);
+				this.bottom_edge.Draw(context);
+				this.bottom_left_edge.Draw(context);
+				this.bottom_right_edge.Draw(context);
+			},
+			GetCursor: function (point) {
+				if (this.selected) {
+					if (this.top_edge.Contains(point)) {
+						return this.top_edge.GetCursor();
+					}
+					if (this.top_left_edge.Contains(point)) {
+						return this.top_left_edge.GetCursor();
+					}
+					if (this.top_right_edge.Contains(point)) {
+						return this.top_right_edge.GetCursor();
+					}
+					if (this.left_edge.Contains(point)) {
+						return this.left_edge.GetCursor();
+					}
+					if (this.right_edge.Contains(point)) {
+						return this.right_edge.GetCursor();
+					}
+					if (this.bottom_edge.Contains(point)) {
+						return this.bottom_edge.GetCursor();
+					}
+					if (this.bottom_left_edge.Contains(point)) {
+						return this.bottom_left_edge.GetCursor();
+					}
+					if (this.bottom_right_edge.Contains(point)) {
+						return this.bottom_right_edge.GetCursor();
+					}
+					return "move";
+				} else {
+					return this._super(point);
+				}
+			},
+			onclick: function (e) {
+				if (!this.selected) {
+					this.selected = true;
+				}
+			}
+		});
+		var TextBlock = Block.extend({
+			font: "10px sans-serif",
+			foreground: "#000000",
+			background_color: "Transparent",
+			textBaseline: "top",
+			textAlign: "start",
+			init: function (text, x, y, w, h) {
+				this._super(x,y,w, h);
+				this.text = text;
+			},
+			Draw: function (context) {
+				this._super(context);
+				var buffer_canvas = this.BufferCanvas();
+				var buffer_context = buffer_canvas.getContext("2d");
+				//背景
+				buffer_context.save();
+				buffer_context.fillStyle = this.background_color;
+				buffer_context.fillRect(0, 0, this.width, this.height);
+				buffer_context.restore();
+				//前景
+				buffer_context.save();
+				buffer_context.font = this.font;
+				buffer_context.fillStyle = this.foreground;
+				buffer_context.textBaseline = this.textBaseline;
+				buffer_context.textAlign = this.textAlign;
+				buffer_context.fillText(this.text, 0, 0);
+				buffer_context.restore();
+
+				context.drawImage(buffer_canvas, this.x, this.y);
+				if (this.selected) {
+					this.DrawEdge(context);
+				}
+			}
+		});
+		var Canvas = mClass.extend({
+			blocks: [],
+			init: function (id, w, h) {
+				this.container = document.getElementById(id);
+				//设置画布像素个数
+				this.container.setAttribute("height", h);
+				this.container.setAttribute("width", w);
+				this.startpoint=new Point(0,0);
+				this.container.onclick = MiscFn.Bind(this.onclick, this);
+				this.container.onmousemove = MiscFn.Bind(this.onmousemove, this);
+				this.container.onmousedown = MiscFn.Bind(this.onmousedown, this);
+				this.container.onmouseup = MiscFn.Bind(this.onmouseup, this);
+			},
+			Repaint: function () {
+				var context = this.container.getContext("2d");
+				//清空画布
+				this.Clear();
+				for (var i in this.blocks) {
+					var block = this.blocks[i];
+					block.Draw(context);
+				};
+			},
+			Clear: function () {
+				var context = this.container.getContext("2d");
+				context.clearRect(0, 0, this.container.getAttribute("width"), this.container.getAttribute("height"));
+			},
+			ShowCursor: function (point) {
+				var block=this.GetTopBlock(point);
+				if(block!=undefined)
+				{
+					this.container.style.cursor = block.GetCursor(point);
+				}
+				//this.Repaint();
+			},
+			Add: function (block) {
+				this.blocks.push(block);
+			},
+			GetTopBlock:function(point){
+				for (var i = this.blocks.length - 1; i >= 0; i--) {
+					var block = this.blocks[i];
+
+					if (block.Contains(point)) {
+						return block;
+					} else {
+						this.container.style.cursor = "auto";
+					}
+				}
+			},
+			onmousedown:function(e){
+				this.startpoint.x=e.offsetX;
+				this.startpoint.y=e.offsetY;
+				var block=this.GetTopBlock(this.startpoint);
+				if(block!=undefined){
+					if(block.selected){
+						for(var i in this.blocks)
+						{
+							block=this.blocks[i];
+							if(block.selected)
+							{
+								block.moving=true;
+							} 
+						}
+					}
+				}
+			},
+			onmouseup:function(e){
+				for(var i in this.blocks)
+				{
+					block=this.blocks[i];
+					if(block.selected)
+					{
+						block.moving=false;
+					} 
+				}
+			},
+			onclick: function (e) {
+				var point = new Point(e.offsetX, e.offsetY);
+
+				var flag = false;
+				for (var i = this.blocks.length - 1; i >= 0; i--) {
+					var block = this.blocks[i];
+
+					if (block.Contains(point) && flag == false) {
+						block.onclick(e);
+						flag = true;
+					} else {
+						if (!e.ctrlKey) {
+							block.selected = false;
+						}
+					}
+				}
+				this.Repaint();
+			},
+			onmousemove: function (e) {
+				var point = new Point(e.offsetX, e.offsetY);
+				this.ShowCursor(point);
+				var mx=point.x-this.startpoint.x;
+				var my=point.y-this.startpoint.y;
+				for(var i in this.blocks)
+				{
+					block=this.blocks[i];
+					if(block.moving)
+					{
+						
+						block.x+=mx;
+						block.y+=my;
+						
+					} 
+				}
+				this.startpoint.x=point.x;
+				this.startpoint.y=point.y;
+				this.Repaint();
+			}
+		});
+	</script>
+</head>
+<body>
+	<canvas id="c"></canvas>
+	<script language="javascript" type="text/javascript">
+		var canvas = new Canvas("c", 400, 400);
+		var tb = new TextBlock("OK", 0, 0, 100, 100);
+		tb.background_color = "blue";
+		canvas.Add(tb);
+		var tb1 = new TextBlock("NO", 50, 50, 100, 100);
+		tb1.background_color = "#999999";
+		canvas.Add(tb1);
+		canvas.Repaint();
+	</script>
+</body>
+</html>
